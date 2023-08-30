@@ -1,5 +1,5 @@
-import 'package:firebase_auth/widgets/custom_button.dart';
-import 'package:firebase_auth/widgets/custom_textfield.dart';
+import 'package:firebase_auth_demo/widgets/custom_button.dart';
+import 'package:firebase_auth_demo/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 
 class EmailPasswordLogin extends StatefulWidget {

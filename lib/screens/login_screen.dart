@@ -1,4 +1,4 @@
-import 'package:firebase_auth/widgets/custom_button.dart';
+import 'package:firebase_auth_demo/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
