@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth_demo/services/firebase_auth_methods.dart';
 import 'package:firebase_auth_demo/widgets/custom_button.dart';
 import 'package:firebase_auth_demo/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,13 @@ class _EmailPasswordLoginState extends State<EmailPasswordLogin> {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
+  }
+
+  void loginUser() {
+    FirebaseAuthMethods(FirebaseAuth.instance).emailLogin(
+        email: emailController.text,
+        password: passwordController.text,
+        context: context);
   }
 
   @override
@@ -50,7 +59,7 @@ class _EmailPasswordLoginState extends State<EmailPasswordLogin> {
           const SizedBox(
             height: 40,
           ),
-          CustomButton(text: 'Login', onTap: () {}),
+          CustomButton(text: 'Login', onTap: loginUser),
         ],
       ),
     );

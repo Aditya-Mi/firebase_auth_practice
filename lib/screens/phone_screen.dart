@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth_demo/services/firebase_auth_methods.dart';
 import 'package:firebase_auth_demo/widgets/custom_button.dart';
 import 'package:firebase_auth_demo/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,11 @@ class _PhoneScreenState extends State<PhoneScreen> {
     super.dispose();
   }
 
+  void phoneSignIn() {
+    FirebaseAuthMethods(FirebaseAuth.instance)
+        .phoneSignIn(context, phoneController.text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +39,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
           const SizedBox(
             height: 40,
           ),
-          CustomButton(text: 'Send OTP', onTap: () {}),
+          CustomButton(text: 'Send OTP', onTap: phoneSignIn),
         ],
       ),
     );
