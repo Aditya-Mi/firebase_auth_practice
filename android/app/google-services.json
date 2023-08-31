@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:135282080011:android:04bfa448536d53a2310a0e",
         "android_client_info": {
-          "package_name": "com.example.firebase_auth"
+          "package_name": "com.example.firebase_auth_demo"
         }
       },
       "oauth_client": [
@@ -17,12 +17,12 @@
           "client_id": "135282080011-mhtauol1db8ul6j74v4mjgmh01ded48q.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.firebase_auth",
+            "package_name": "com.example.firebase_auth_demo",
             "certificate_hash": "b98ff5a36f9a7b99249cbd68d4b7698df9ddac23"
           }
         },
         {
-          "client_id": "135282080011-3vj2sntggsnbc83df42nl5l7l7dh60h6.apps.googleusercontent.com",
+          "client_id": "135282080011-l2020a8bkphutt9ls95ljihj45udep30.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

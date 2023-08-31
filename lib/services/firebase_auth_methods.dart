@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_demo/utils/show_Snack_Bar.dart';
 import 'package:firebase_auth_demo/utils/show_otp_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthMethods {
   final FirebaseAuth _auth;
@@ -50,6 +51,7 @@ class FirebaseAuthMethods {
 
   //Phone signIn
   Future<void> phoneSignIn(BuildContext context, String phoneNumber) async {
+    //both sign in and sign up process is same for phone Sign in
     TextEditingController codeController = TextEditingController();
     await _auth.verifyPhoneNumber(
         verificationCompleted: (PhoneAuthCredential phoneAuthCredential) async {
@@ -72,5 +74,28 @@ class FirebaseAuthMethods {
         }),
         codeAutoRetrievalTimeout: (String verificationId) {},
         phoneNumber: phoneNumber);
+  }
+
+  //Google SignIn
+  Future<void> signInWithGoogle(BuildContext context) async {
+    try {
+      //both signUp and signIn process is same for google authentication
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+      if (googleAuth?.accessToken != null && googleAuth?.idToken != null) {
+        final credential = GoogleAuthProvider.credential(
+            accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+        UserCredential userCredential =
+            await _auth.signInWithCredential(credential);
+        if (userCredential.user != null) {
+          if (userCredential.additionalUserInfo!.isNewUser) {
+            // this is for checking if the user is a new user so we can store data
+          }
+        }
+      }
+    } on FirebaseAuthException catch (e) {
+      showSnackBar(context, e.message!);
+    }
   }
 }
